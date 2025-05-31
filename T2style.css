@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+    background: #eafaf1;
+    color: #234;
+}
+
+form {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px #ccc;
+    width: 300px;
+}
+
+input[type="text"], input[type="email"] {
+    width: 90%;
+    padding: 6px;
+    margin: 8px 0;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+}
+
+button {
+    padding: 6px 16px;
+    background: #26b47c;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1e9463;
+}
+
+#todoList {
+    list-style: none;
+    padding: 0;
+}
+
+#todoList li {
+    background: #fff;
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.remove-btn {
+    background: #f44336;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 2px 8px;
+    cursor: pointer;
+}
