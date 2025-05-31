@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #eafaf1;
+    padding: 2em;
+}
+h1 {
+    color: #26b47c;
+}
+label {
+    margin-right: 1em;
+}
+#productList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    margin-top: 1em;
+}
+.product {
+    background: #fff;
+    padding: 1em;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px #ccc;
+    width: 200px;
+}
+.product h2 {
+    margin: 0 0 0.5em 0;
+    font-size: 1.2em;
+}
+.product .price {
+    color: #26b47c;
+    font-weight: bold;
+}
+.product .rating {
+    color: #ffa500;
+}
