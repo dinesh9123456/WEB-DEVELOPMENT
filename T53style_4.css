@@ -1,0 +1,160 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f8fb;
+    color: #222;
+    line-height: 1.6;
+}
+
+header {
+    background: #26b47c;
+    color: #fff;
+    padding: 1.2em 1em;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+nav h1 {
+    font-size: 1.6em;
+    letter-spacing: 1px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5em;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: text-decoration 0.2s;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    max-width: 900px;
+    margin: 2em auto;
+    padding: 1em;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px #c8e6c9;
+}
+
+section {
+    margin-bottom: 2em;
+}
+
+.skills-list {
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+    margin-top: 0.5em;
+}
+
+.skills-list li {
+    background: #e0f2f1;
+    color: #222;
+    padding: 0.5em 1em;
+    border-radius: 20px;
+    font-size: 1em;
+}
+
+#project-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5em;
+}
+
+.project-card {
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px #bbb;
+    padding: 1em;
+    width: 240px;
+    min-width: 180px;
+    flex: 1 1 240px;
+    transition: transform 0.2s;
+}
+
+.project-card:hover {
+    transform: translateY(-4px) scale(1.03);
+}
+
+.project-card img {
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 0.5em;
+    display: block;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+    max-width: 350px;
+}
+
+form input, form textarea {
+    padding: 0.7em;
+    border: 1px solid #b2dfdb;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+form button {
+    background: #26b47c;
+    color: #fff;
+    border: none;
+    padding: 0.8em;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.2s;
+}
+
+form button:hover {
+    background: #1e9463;
+}
+
+#formMsg {
+    font-size: 0.95em;
+    min-height: 1.2em;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5em 0 0.5em 0;
+    color: #666;
+    font-size: 1em;
+}
+
+/* Responsive Design */
+@media (max-width: 700px) {
+    nav {
+        flex-direction: column;
+        gap: 0.8em;
+    }
+    main {
+        padding: 0.5em;
+    }
+    #project-list {
+        flex-direction: column;
+        gap: 1em;
+    }
+    .project-card {
+        width: 100%;
+        min-width: unset;
+    }
+}
