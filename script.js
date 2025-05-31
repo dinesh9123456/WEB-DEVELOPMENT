@@ -1,46 +1,77 @@
-// Form Validation
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const name = this.name.value.trim();
-    const email = this.email.value.trim();
-    const msg = document.getElementById('formMsg');
-    msg.style.color = 'red';
-
-    if (!name) {
-        msg.textContent = "Name is required.";
-        return;
+// --- Interactive Quiz ---
+const quizData = [
+    {
+        question: "Which of these is a JavaScript data type?",
+        options: ["String", "Car", "Table", "Window"],
+        answer: 0
+    },
+    {
+        question: "How do you write a comment in JavaScript?",
+        options: ["// comment", "<!-- comment -->", "# comment", "' comment"],
+        answer: 0
+    },
+    {
+        question: "Which method is used to select an element by ID?",
+        options: ["getElementById()", "querySelectorAll()", "getElementsByClassName()", "getElementByTagName()"],
+        answer: 0
     }
-    if (!validateEmail(email)) {
-        msg.textContent = "Invalid email format.";
-        return;
-    }
-    msg.style.color = 'green';
-    msg.textContent = "Form submitted successfully!";
-    this.reset();
-});
+];
 
-function validateEmail(email) {
-    // Simple email regex
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+let currentQuestion = 0;
+let score = 0;
+
+function loadQuestion() {
+    const q = quizData[currentQuestion];
+    document.getElementById('question').textContent = q.question;
+    const optionsDiv = document.getElementById('options');
+    optionsDiv.innerHTML = '';
+    q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.textContent = opt;
+        btn.onclick = () => selectOption(idx, btn);
+        optionsDiv.appendChild(btn);
+    });
+    document.getElementById('nextBtn').style.display = 'none';
+    document.getElementById('quizResult').textContent = '';
 }
 
-// To-Do List
-function addTask() {
-    const input = document.getElementById('newTask');
-    const task = input.value.trim();
-    if (!task) return;
-    const ul = document.getElementById('todoList');
-    const li = document.createElement('li');
-    li.textContent = task;
+function selectOption(idx, btn) {
+    // Remove previous selections
+    Array.from(document.getElementById('options').children).forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    document.getElementById('nextBtn').style.display = 'inline-block';
+    btn.dataset.selected = idx;
+}
 
-    const btn = document.createElement('button');
-    btn.textContent = 'Remove';
-    btn.className = 'remove-btn';
-    btn.onclick = function() {
-        ul.removeChild(li);
-    };
+document.getElementById('nextBtn').onclick = function() {
+    const selectedBtn = Array.from(document.getElementById('options').children).find(b => b.classList.contains('selected'));
+    if (selectedBtn) {
+        const selected = Number(selectedBtn.dataset.selected);
+        if (selected === quizData[currentQuestion].answer) {
+            score++;
+        }
+        currentQuestion++;
+        if (currentQuestion < quizData.length) {
+            loadQuestion();
+        } else {
+            document.getElementById('quiz').innerHTML = `<div id="quizResult">Quiz Complete! Your score: ${score}/${quizData.length}</div>`;
+        }
+    }
+};
 
-    li.appendChild(btn);
-    ul.appendChild(li);
-    input.value = '';
+// Initialize quiz
+loadQuestion();
+
+// --- Fetch Data from an API ---
+function fetchJoke() {
+    const jokeP = document.getElementById('joke');
+    jokeP.textContent = "Loading...";
+    fetch('https://official-joke-api.appspot.com/random_joke')
+        .then(res => res.json())
+        .then(data => {
+            jokeP.textContent = `${data.setup} — ${data.punchline}`;
+        })
+        .catch(() => {
+            jokeP.textContent = "Failed to fetch a joke.";
+        });
 }

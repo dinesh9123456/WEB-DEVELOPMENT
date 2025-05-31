@@ -2,22 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Contact Form & To-Do List</title>
+    <title>Advanced CSS & JavaScript Demo</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Contact Form</h1>
-    <form id="contactForm">
-        <label>Name: <input type="text" name="name" required></label><br>
-        <label>Email: <input type="email" name="email" required></label><br>
-        <button type="submit">Submit</button>
-        <span id="formMsg"></span>
-    </form>
+    <h1>Responsive Quiz & API Demo</h1>
 
-    <h2>To-Do List</h2>
-    <input type="text" id="newTask" placeholder="Add a new task">
-    <button onclick="addTask()">Add</button>
-    <ul id="todoList"></ul>
+    <!-- Responsive Section -->
+    <section class="responsive-section">
+        <h2>Resize the window to see responsive design!</h2>
+        <p>This section adjusts font size and layout based on your device.</p>
+    </section>
+
+    <!-- Interactive Quiz -->
+    <section>
+        <h2>Quiz: JavaScript Basics</h2>
+        <div id="quiz">
+            <div id="question"></div>
+            <div id="options"></div>
+            <button id="nextBtn" style="display:none;">Next</button>
+            <div id="quizResult"></div>
+        </div>
+    </section>
+
+    <!-- Fetch Data from API -->
+    <section>
+        <h2>Random Joke (Fetched from API)</h2>
+        <button onclick="fetchJoke()">Get a Joke</button>
+        <p id="joke"></p>
+    </section>
 
     <script src="script.js"></script>
 </body>
